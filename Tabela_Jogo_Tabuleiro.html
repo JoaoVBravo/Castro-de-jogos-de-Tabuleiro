@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUD // Catálogo de Card Games</title>
+    <link rel="stylesheet" href="Tabela_Jogo_Tabuleiro.css">
+</head>
+<body>
+
+    <div class="hud-frame">
+        
+        <header class="hud-topbar">
+            <div class="hud-id">
+                <span class="led"></span>
+                <span>SYS.DECKLIST // V2.0</span>
+            </div>
+            <div class="hud-status">
+                <span>MODO: REGISTRO LOCAL</span>
+            </div>
+        </header>
+
+        <section class="hud-hero">
+            <span class="hud-subtag">BANCO DE DADOS DE COLEÇÃO</span>
+            <h1>Catálogo de Card Games</h1>
+            <p>Gerenciamento estruturado de títulos, regiões e pré-visualização</p>
+        </section>
+
+        <!-- Módulo 01: Entrada de dados com trava de preenchimento -->
+        <section class="hud-modulo">
+            <div class="modulo-header">
+                <span>[ 01 ] ENTRADA DE DADOS</span>
+                <span>OBRIGATÓRIO: TODOS OS CAMPOS</span>
+            </div>
+
+            <!-- novalidate permite que a trava personalizada do JS controle os avisos -->
+            <form id="formulario" class="hud-form" novalidate>
+                <div class="hud-campo">
+                    <label for="campoNome">TÍTULO DO JOGO *</label>
+                    <input 
+                        type="text" 
+                        id="campoNome" 
+                        placeholder="Ex: Pokémon TCG" 
+                        required
+                    >
+                </div>
+
+                <div class="hud-campo">
+                    <label for="campoPais">PAÍS DE ORIGEM *</label>
+                    <input 
+                        type="text" 
+                        id="campoPais" 
+                        placeholder="Ex: Japão" 
+                        required
+                    >
+                </div>
+
+                <div class="hud-campo">
+                    <label for="campoImagem">CAMINHO / URL DA IMAGEM *</label>
+                    <input 
+                        type="text" 
+                        id="campoImagem" 
+                        placeholder="Ex: img/pokemon.png" 
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="hud-btn">REGISTRAR</button>
+            </form>
+
+            <!-- Aviso exibido pela trava caso falte preencher algum quadro -->
+            <div id="mensagemErro" class="hud-alerta" hidden>
+                BLOQUEADO: Preencha todos os quadros antes de registrar na lista.
+            </div>
+        </section>
+
+        <!-- Módulo 02: Filtro e Tabela -->
+        <section class="hud-modulo hud-modulo-tabela">
+            <div class="modulo-header">
+                <span>[ 02 ] REGISTROS ATIVOS</span>
+                <span id="contadorRegistros" class="hud-pill">0 ITENS</span>
+            </div>
+
+            <!-- Barra de filtro por nome -->
+            <div class="hud-filtro-bar">
+                <label for="campoFiltro">FILTRAR POR NOME:</label>
+                <input 
+                    type="text" 
+                    id="campoFiltro" 
+                    placeholder="Digite o nome do jogo para procurar..."
+                >
+            </div>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TÍTULO (PASSE O MOUSE)</th>
+                            <th>ORIGEM</th>
+                            <th>AÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabela">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="hud-footer">
+            <span>STATUS: OPERACIONAL</span>
+            <span>DADOS VINCULADOS POR ITEM</span>
+        </footer>
+    </div>
+
+    <!-- Pop-up flutuante de imagem (controlado pelo JS ao passar o mouse) -->
+    <div id="popupImagem" class="hud-popup" hidden>
+        <div class="popup-header">
+            <span id="popupTitulo">PRÉ-VISUALIZAÇÃO</span>
+        </div>
+        <div class="popup-corpo">
+            <img id="popupFoto" src="" alt="Imagem do jogo">
+            <span id="popupFallback" class="popup-sem-foto" hidden>
+                IMAGEM NÃO ENCONTRADA<br>
+                <small id="popupCaminhoTexto"></small>
+            </span>
+        </div>
+    </div>
+
+    <script src="Tabela_Jogo_Tabuleiro.js"></script>
+</body>
+</html>

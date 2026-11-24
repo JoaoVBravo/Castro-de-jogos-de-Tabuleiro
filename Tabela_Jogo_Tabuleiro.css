@@ -1,0 +1,449 @@
+/* ==========================================================================
+   1. PALETA DE CORES GLOBAL (TEMA)
+   ========================================================================== */
+   :root {
+    --bg-externo: #090b10;
+    --bg-hud: #11151f;
+    --bg-modulo: #161b28;
+    --bg-header-modulo: #1c2233;
+    --borda-estrutural: #273047;
+    --borda-destaque: #38bdf8;
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #94a3b8;
+    --ciano-hud: #0ea5e9;
+    --ciano-hover: #0284c7;
+    --verde-online: #10b981;
+    --vermelho-alerta: #ef4444;
+    --vermelho-fundo: rgba(239, 68, 68, 0.14);
+}
+
+/* ==========================================================================
+   2. RESET E FUNDO DA PÁGINA
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-externo);
+    background-image: 
+        linear-gradient(rgba(39, 48, 71, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(39, 48, 71, 0.25) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color: var(--texto-principal);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+}
+
+/* ==========================================================================
+   3. MOLDURA PRINCIPAL DO HUD
+   ========================================================================== */
+.hud-frame {
+    width: 100%;
+    max-width: 880px; /* Aumentado levemente para comportar os 3 campos */
+    background-color: var(--bg-hud);
+    border: 1px solid var(--borda-estrutural);
+    border-top: 3px solid var(--ciano-hud);
+    border-radius: 8px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.65);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   4. BARRA SUPERIOR E CABEÇALHO
+   ========================================================================== */
+.hud-topbar {
+    background-color: var(--bg-header-modulo);
+    border-bottom: 1px solid var(--borda-estrutural);
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    color: var(--texto-secundario);
+    letter-spacing: 0.05em;
+}
+
+.hud-id {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--texto-principal);
+    font-weight: 600;
+}
+
+.led {
+    width: 8px;
+    height: 8px;
+    background-color: var(--ciano-hud);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--ciano-hud);
+}
+
+.hud-hero {
+    text-align: center;
+    padding: 24px 24px 18px;
+    border-bottom: 1px solid var(--borda-estrutural);
+}
+
+.hud-subtag {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--ciano-hud);
+    background-color: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.hud-hero h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.hud-hero p {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   5. BLOCOS INTERNOS (MÓDULOS 01 E 02)
+   ========================================================================== */
+.hud-modulo {
+    margin: 20px 24px 0;
+    background-color: var(--bg-modulo);
+    border: 1px solid var(--borda-estrutural);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.hud-modulo-tabela {
+    margin-bottom: 24px;
+}
+
+.modulo-header {
+    background-color: var(--bg-header-modulo);
+    border-bottom: 1px solid var(--borda-estrutural);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    color: var(--texto-secundario);
+    letter-spacing: 0.06em;
+}
+
+.hud-pill {
+    color: var(--verde-online);
+    background-color: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   6. FORMULÁRIO DE CADASTRO E TRAVA DE ERRO
+   ========================================================================== */
+.hud-form {
+    padding: 18px 16px;
+    /* 3 colunas de campos + 1 coluna para o botão */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 12px;
+    align-items: end;
+}
+
+.hud-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hud-campo label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--texto-secundario);
+}
+
+.hud-campo input,
+.hud-filtro-bar input {
+    background-color: var(--bg-externo);
+    border: 1px solid var(--borda-estrutural);
+    border-radius: 4px;
+    padding: 9px 12px;
+    color: var(--texto-principal);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.hud-campo input::placeholder,
+.hud-filtro-bar input::placeholder {
+    color: #475569;
+}
+
+.hud-campo input:focus,
+.hud-filtro-bar input:focus {
+    border-color: var(--borda-destaque);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* Destaque visual quando o campo falha na trava de validação */
+.hud-campo input.campo-invalido {
+    border-color: var(--vermelho-alerta);
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.hud-btn {
+    background-color: var(--ciano-hud);
+    color: #090b10;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 18px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.hud-btn:hover {
+    background-color: var(--ciano-hover);
+    color: #ffffff;
+}
+
+/* Faixa de aviso da trava */
+.hud-alerta {
+    background-color: var(--vermelho-fundo);
+    border-top: 1px solid rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    padding: 8px 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* ==========================================================================
+   7. BARRA DE FILTRO E TABELA
+   ========================================================================== */
+.hud-filtro-bar {
+    padding: 12px 16px;
+    background-color: rgba(9, 11, 16, 0.35);
+    border-bottom: 1px solid var(--borda-estrutural);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hud-filtro-bar label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ciano-hud);
+    white-space: nowrap;
+}
+
+.hud-filtro-bar input {
+    width: 100%;
+    padding: 7px 12px;
+    font-size: 0.88rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead {
+    background-color: rgba(9, 11, 16, 0.5);
+    border-bottom: 1px solid var(--borda-estrutural);
+}
+
+th {
+    padding: 10px 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--texto-secundario);
+    border-right: 1px solid var(--borda-estrutural);
+}
+
+th:last-child,
+td:last-child {
+    border-right: none;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--borda-estrutural);
+    border-right: 1px solid rgba(39, 48, 71, 0.5);
+    font-size: 0.92rem;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: rgba(56, 189, 248, 0.06);
+}
+
+/* Célula interativa que ativa o pop-up de imagem */
+.celula-titulo {
+    font-weight: 600;
+    color: var(--texto-principal);
+    cursor: help;
+    text-decoration: underline dotted rgba(56, 189, 248, 0.5);
+    text-underline-offset: 4px;
+}
+
+.celula-titulo:hover {
+    color: var(--borda-destaque);
+}
+
+tbody td:nth-child(2) {
+    color: var(--texto-secundario);
+}
+
+/* Botão de remover item */
+.btn-remover {
+    background-color: transparent;
+    color: var(--vermelho-alerta);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-remover:hover {
+    background-color: var(--vermelho-alerta);
+    color: #ffffff;
+}
+
+.linha-vazia td {
+    color: var(--texto-secundario);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.8rem;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   8. POP-UP DE IMAGEM AO PASSAR O MOUSE
+   ========================================================================== */
+.hud-popup {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none; /* Impede que o pop-up atrapalhe o movimento do mouse */
+    width: 220px;
+    background-color: var(--bg-hud);
+    border: 1px solid var(--borda-destaque);
+    border-radius: 6px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+}
+
+.popup-header {
+    background-color: var(--bg-header-modulo);
+    border-bottom: 1px solid var(--borda-estrutural);
+    padding: 6px 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--borda-destaque);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.popup-corpo {
+    width: 100%;
+    height: 150px;
+    background-color: var(--bg-externo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.popup-corpo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.popup-sem-foto {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.68rem;
+    color: var(--texto-secundario);
+    text-align: center;
+    line-height: 1.4;
+}
+
+.popup-sem-foto small {
+    color: var(--ciano-hud);
+    word-break: break-all;
+}
+
+/* ==========================================================================
+   9. RODAPÉ E RESPONSIVIDADE
+   ========================================================================== */
+.hud-footer {
+    background-color: var(--bg-header-modulo);
+    border-top: 1px solid var(--borda-estrutural);
+    padding: 8px 24px;
+    display: flex;
+    justify-content: space-between;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.7rem;
+    color: var(--texto-secundario);
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 720px) {
+    .hud-form {
+        grid-template-columns: 1fr;
+    }
+
+    .hud-btn {
+        width: 100%;
+    }
+
+    .hud-filtro-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hud-topbar,
+    .hud-footer {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+    }
+}
